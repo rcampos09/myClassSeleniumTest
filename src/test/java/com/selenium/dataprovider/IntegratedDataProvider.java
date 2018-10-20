@@ -30,12 +30,23 @@ public class IntegratedDataProvider {
   }
   
   @DataProvider
-  public static Object[][] productHDProgrammed() {
+  public static Object[][] productSodimac2() {
     Gson gson = new Gson();
     Producto product =
         gson.fromJson(
             FileDataProvider.asString(
-                String.format("./resource/productHDProgrammed.json")),
+                String.format("./resource/product2.json")),
+            Producto.class);
+    return new Object[][] {{product}};
+  }
+  
+  @DataProvider
+  public static Object[][] productSodimac3() {
+    Gson gson = new Gson();
+    Producto product =
+        gson.fromJson(
+            FileDataProvider.asString(
+                String.format("./resource/product3.json")),
             Producto.class);
     return new Object[][] {{product}};
   }

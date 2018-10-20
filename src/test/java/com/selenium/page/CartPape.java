@@ -13,13 +13,18 @@ public class CartPape extends BaseConfig {
     this.driver = driver;
     PageFactory.initElements(driver, this);
   }
-
+ 
   // create Element
   @FindBy(xpath = "//*[@class='CartItem-con']")
   private WebElement cartItemDiv;
-
+ 
   //create method
   public void validCartItem() {
     cartItemDiv.isDisplayed();
+  }
+  
+  //create method
+  public void invalidCartItem() {
+    cartItemDiv.isEnabled();
   }
 }

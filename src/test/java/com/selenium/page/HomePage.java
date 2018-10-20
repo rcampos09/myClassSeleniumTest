@@ -24,8 +24,8 @@ public class HomePage extends BaseConfig {
   
   //create method
   
-  public PDPPage searchSKU() {
-    searchBoxInpt.sendKeys("345678");
+  public PDPPage searchSKU(String producto) {
+    searchBoxInpt.sendKeys(producto);
     searchIconBtn.click();
     return new PDPPage(driver);
   }
