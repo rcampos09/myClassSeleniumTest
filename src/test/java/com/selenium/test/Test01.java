@@ -2,18 +2,20 @@ package com.selenium.test;
 
 import org.testng.annotations.Test;
 import com.selenium.config.BaseConfig;
+import com.selenium.dataprovider.IntegratedDataProvider;
+import com.selenium.entities.Producto;
 import com.selenium.page.CartPape;
 import com.selenium.page.HomePage;
 import com.selenium.page.PDPPage;
 
 public class Test01 extends BaseConfig {
 
-  @Test()
-  public void exampleTest() {
+  @Test(dataProvider = "productSodimac", dataProviderClass = IntegratedDataProvider.class )
+  public void exampleTest(Producto product, Producto product2) {
     // create instance HomePage
     HomePage homePage = new HomePage(driver);
     // search sku method in page (HomePage)
-    PDPPage pdpPage = homePage.searchSKU();
+    PDPPage pdpPage = homePage.searchSKU(product.getSku());
     // Add sku to cart
     pdpPage.clickAddToCart();
     // To Go CartPage
@@ -21,4 +23,4 @@ public class Test01 extends BaseConfig {
     // Valid Product add in cart
     cartPage.validCartItem();
   }
-}
+} 
