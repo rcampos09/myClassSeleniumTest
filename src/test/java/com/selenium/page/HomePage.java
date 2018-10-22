@@ -31,7 +31,7 @@ public class HomePage extends BaseConfig {
   }
   
   public PDPPage searchProduct() {
-    searchBoxInpt.sendKeys("654654");
+    searchBoxInpt.sendKeys("111338-0");
     searchIconBtn.click();
     return new PDPPage(driver);
   }

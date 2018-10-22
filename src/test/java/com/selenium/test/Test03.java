@@ -8,9 +8,10 @@ import com.selenium.page.PDPPage;
 public class Test03 extends BaseConfig {
 
   @Test
-  public void example02() {
+  public void example03() {
     HomePage homePage = new HomePage(driver);
     PDPPage pdpPage = homePage.searchProduct();
     pdpPage.clickAddToCart();
   }
 }
+ 
