@@ -18,18 +18,7 @@ public class IntegratedDataProvider {
     return new Object[][] {{product}};
   }
   
-  @DataProvider
-  public static Object[][] productHDnormal() {
-    Gson gson = new Gson();
-    Producto product =
-        gson.fromJson(
-            FileDataProvider.asString(
-                String.format("./resource/productHDnormal.json")),
-            Producto.class);
-    return new Object[][] {{product}};
-  }
-  
-  @DataProvider
+  @DataProvider 
   public static Object[][] productSodimac2() {
     Gson gson = new Gson();
     Producto product =

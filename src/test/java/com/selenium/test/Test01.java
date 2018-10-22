@@ -11,7 +11,7 @@ import com.selenium.page.PDPPage;
 public class Test01 extends BaseConfig {
 
   @Test(dataProvider = "productSodimac", dataProviderClass = IntegratedDataProvider.class )
-  public void exampleTest(Producto product, Producto product2) {
+  public void example01(Producto product) {
     // create instance HomePage
     HomePage homePage = new HomePage(driver);
     // search sku method in page (HomePage)
@@ -24,3 +24,4 @@ public class Test01 extends BaseConfig {
     cartPage.validCartItem();
   }
 } 
+ 
