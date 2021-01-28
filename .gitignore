@@ -1,2 +1,9 @@
-/target/
-/test-output/
+# Untracked files and folder:
+
+target/
+test-output/
+.idea
+.settings
+.classpath
+.project
+allure-results/

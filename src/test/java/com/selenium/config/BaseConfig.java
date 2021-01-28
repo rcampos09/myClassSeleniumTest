@@ -1,8 +1,10 @@
 package com.selenium.config;
 
-import java.util.concurrent.TimeUnit;
+import java.net.URI;
+import java.net.MalformedURLException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -10,18 +12,30 @@ public class BaseConfig {
 
   public WebDriver driver;
 
+  String urlPage = "https://www.bice.cl/";
+  String urlSelenoid = "http://localhost";
+  String portSelenoid = ":4444/wd/hub";;
+
   @BeforeMethod()
-  public void getDriver() {
-    System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
-    driver = new ChromeDriver();
-    //
-    driver.manage().deleteAllCookies();
-    driver.navigate().to("https://www.sodimac.cl/sodimac-cl/");
-    //
-    System.out.println("Successfully opened the website https://www.sodimac.cl/sodimac-cl/");
-    driver.manage().window().maximize();
-    driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
-    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+  public RemoteWebDriver getDriver() throws Exception {
+    if (driver == null) {
+
+      DesiredCapabilities browser = new DesiredCapabilities();
+
+      browser.setBrowserName("chrome");
+      browser.setVersion("87.0");
+      browser.setCapability("name", urlPage + " Test:" + getClass().getSimpleName());
+      browser.setCapability("enableVNC", true);
+      try {
+        driver = new RemoteWebDriver(URI.create(urlSelenoid + portSelenoid).toURL(), browser);
+        driver.manage().window().maximize();
+        driver.get(urlPage);
+      } catch (MalformedURLException e) {
+        System.out.println("error " + e.getMessage());
+        e.printStackTrace();
+      }
+    }
+    return (RemoteWebDriver) driver;
   }
 
   @AfterMethod()

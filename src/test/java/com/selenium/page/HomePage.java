@@ -15,24 +15,14 @@ public class HomePage extends BaseConfig {
   }
 
   //create Element 
-  
-  @FindBy(id = "searchBoxInput")
-  private WebElement searchBoxInpt; 
-  
-  @FindBy(xpath = "//div[@class='searchIcon_-xI-Ide9']")
-  private WebElement searchIconBtn; 
-  
+
+  @FindBy(xpath = "//*[@id=\"page-1399334048258\"]")
+  private WebElement solucionesBtn;
+
   //create method
-  
-  public PDPPage searchSKU(String producto) {
-    searchBoxInpt.sendKeys(producto);
-    searchIconBtn.click();
-    return new PDPPage(driver);
-  }
-  
-  public PDPPage searchProduct() {
-    searchBoxInpt.sendKeys("111338-0");
-    searchIconBtn.click();
-    return new PDPPage(driver);
+
+  public SolucionesPersonas clickSolucionesPersona() {
+    solucionesBtn.click();
+    return new SolucionesPersonas(driver);
   }
 }
