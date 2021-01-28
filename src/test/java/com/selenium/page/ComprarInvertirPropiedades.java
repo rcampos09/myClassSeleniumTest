@@ -3,6 +3,7 @@ package com.selenium.page;
 import com.selenium.config.BaseConfig;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -10,7 +11,7 @@ public class ComprarInvertirPropiedades extends BaseConfig {
 
   public  ComprarInvertirPropiedades(WebDriver driver) {
     super();
-    this.driver = driver;
+    this.driver = (RemoteWebDriver) driver;
     PageFactory.initElements(driver, this);
   }
 

@@ -7,14 +7,17 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+
+@Listeners(com.selenium.config.Listener.class)
 
 public class BaseConfig {
 
-  public WebDriver driver;
+  public RemoteWebDriver driver;
 
   String urlPage = "https://www.bice.cl/";
   String urlSelenoid = "http://localhost";
-  String portSelenoid = ":4444/wd/hub";;
+  String portSelenoid = ":4444/wd/hub";
 
   @BeforeMethod()
   public RemoteWebDriver getDriver() throws Exception {
